@@ -36,7 +36,7 @@ class Starfighter
   end
 
   def slide
-    if not_sliding
+    if !sliding
       @slide_time = 50
       @vx += Gosu::offset_x @angle, 10.0
       @vy += Gosu::offset_y @angle, 10.0
@@ -49,12 +49,12 @@ class Starfighter
     @slide_time -= 1 if @slide_time > 0
   end
 
-  def not_sliding
-    @slide_time == 0
+  def sliding
+    @slide_time > 0
   end
 
   def trundle direction
-    if not_sliding
+    if !sliding
       @angle = direction_to_angle direction
       @vx = Gosu::offset_x @angle, 2.5
       @vy = Gosu::offset_y @angle, 2.5
